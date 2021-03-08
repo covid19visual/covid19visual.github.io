@@ -1,0 +1,124 @@
+<html>
+<head>
+<script data-ad-client="ca-pub-6588502553669538" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7VMH5QLNQJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7VMH5QLNQJ');
+</script>
+<script>
+
+	function onSelectionChanged() {
+		
+		var selection = document.getElementById("selection");
+		if (selection.value == "cases") {
+			document.getElementById("container").innerHTML = document.getElementById("cases").innerHTML;
+		} else {
+			document.getElementById("container").innerHTML = document.getElementById("deaths").innerHTML;
+		}
+		
+		document.title = selection.options[selection.selectedIndex].text + " bar chart race";
+	}
+	
+	function getDialogPosition() {
+		return 'width=640,height=320,left='+(screen.width - 640)/2+',top='+(screen.height - 320)/2;
+	}
+	
+	function shareOnFacebook() {
+		window.open(
+			'https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcovid19visual.github.io/croatia', 
+			'facebook-share-dialog', 
+			getDialogPosition()
+		); 
+		return false;
+	}
+	
+	function shareOnTwitter() {
+		window.open(
+			'https://twitter.com/intent/tweet?text='+document.title+'&url=https%3A%2F%2Fcovid19visual.github.io/croatia&hashtags=coronavirusâ€‹%2Ccovid19', 
+			'twitter-share-dialog', 
+			getDialogPosition()
+		); 
+		return false;
+	}
+	
+	function shareByEmail() {
+		window.location.href="mailto:?&subject="+document.title+"&body="+encodeURIComponent("I saw this on internet and thought you'd like to see it: https://covid19visual.github.io/croatia");
+	}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body { text-align:center; font-family: Helvetica, sans-serif; }
+table { width: 100%; table-layout: fixed; }
+select { font-size: 1.4em; }
+
+.fa {
+  padding: 10px;
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+	
+.fa-envelope {
+  background: #007bb5;
+  color: white;
+}
+</style>
+</head>
+<body onload="onSelectionChanged()">
+
+<table>
+<tr>
+<td></td>
+<td style="text-align: center;">
+	<a href="https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases">Data source</a> | 
+	<a href="https://forms.gle/MKvg7jhLtzFJYtT4A">Contact</a>
+</td>
+<td style="text-align: right;">
+	<a href="#" class="fa fa-facebook" title="Share on Facebook" onclick="shareOnFacebook()"></a>
+	<a href="#" class="fa fa-twitter" title="Share on Twitter" onclick="shareOnTwitter()"></a>
+	<a href="#" class="fa fa-envelope"  title="Share by email" onclick="shareByEmail()"></a>
+</td>
+</tr>
+</table>
+<br />
+
+<select id="selection" onchange="onSelectionChanged()">
+	<option value="cases" selected>Croatia - Daily new confirmed COVID-19 cases per 100,000 people (rolling 7-day average)</option>
+	<option value="deaths">Croatia - Daily new confirmed COVID-19 deaths per 100,000 people (rolling 7-day average)</option>
+</select>
+
+<div id="container"></div>
+
+<div id="cases" style="display:none">
+	<div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/5494552">
+		<script src="https://public.flourish.studio/resources/embed.js"></script>
+	</div>
+</div>
+
+<div id="deaths" style="display:none">
+	<div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/5494471">
+		<script src="https://public.flourish.studio/resources/embed.js"></script>
+	</div>
+</div>
+
+</body>
+</html>
